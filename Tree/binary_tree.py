@@ -60,12 +60,11 @@ def preorder_traversal(node):
     preorder_traversal(node.left)
     preorder_traversal(node.right)
 
+
 if __name__ == '__main__':
     dt = ((3, 2, 4), 1, ((7, 6, 11), 5, (9, 8, 10)))
     tree = tuple_parse(dt)
     display_tree(tree)
 
-    #in_ord = inorder_traversal(tree)
+    # in_ord = inorder_traversal(tree)
     preord = preorder_traversal(tree)
-
-
