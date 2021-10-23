@@ -9,27 +9,24 @@ class Graph:
 
     def bfs(self, node):
         dq = []
-        parent=[]
+        # parent=[]
         dist = [0] * self.n
         discovered = [False] * self.n
         discovered[node] = True
-        parent.append(0)
+        # parent.append(0)
         dist[node]=0
-        dq.append(node)
+        dq.append([node, 0, dist[node]])
         idx = 0
         while idx < self.n:
-            current = dq[idx]
+            current = dq[idx][0]
             idx += 1
-
             for node in self.data[current]:
-
                 if not discovered[node]:
-                    dq.append(node)
-                    parent.append(current)
-                    dist[node]=1+dist[current]
+                    dist[node] = 1 + dist[current]
+                    dq.append([node, current, dist[node]])
+                    # parent.append(current)
                     discovered[node] = True
-
-        return dq, parent, dist
+        return dq
 
     def __repr__(self):
         return '\n'.join(["{}.{}".format(i, v) for i, v in self.data])
@@ -43,5 +40,4 @@ if __name__ == "__main__":
     edges = [(0, 1), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4)]
 
     graph = Graph(node, edges)
-
     print(graph.bfs(3))
