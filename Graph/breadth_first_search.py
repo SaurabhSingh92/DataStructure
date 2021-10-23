@@ -29,7 +29,7 @@ class Graph:
         return dq
 
     def __repr__(self):
-        return '\n'.join(["{}.{}".format(i, v) for i, v in self.data])
+        return '\n'.join(["{} : {}".format(i, v) for i, v in enumerate(self.data)])
 
     def __str__(self):
         return self.__repr__()
@@ -40,4 +40,4 @@ if __name__ == "__main__":
     edges = [(0, 1), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4)]
 
     graph = Graph(node, edges)
-    print(graph.bfs(3))
+    print(graph)
